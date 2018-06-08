@@ -14,8 +14,8 @@
     var canvasContext;
     var ballX = 50;
     var ballSpeedX = 5;
-    // var ballY = 50;
-    // var ballSpeedY = 5;
+    var ballY = 50;
+    var ballSpeedY = 5;
     
     //Once the window loads run this fucntion
     window.onload = function() {
@@ -37,6 +37,13 @@
         if (ballX > canvas.width) {
             ballSpeedX = -ballSpeedX
         }
+        ballY = ballY + ballSpeedY;
+        if (ballY < 0) {
+            ballSpeedY = -ballSpeedY
+        }
+        if (ballY > canvas.height) {
+            ballSpeedY = -ballSpeedY
+        }
     }
 
     function drawEverything() {
@@ -45,12 +52,16 @@
         //left players paddle
         colorRect(0,210,10,100,"white")
         //ball
-        canvasContext.fillStyle = "red";
+        colorCircle(ballX, ballY, 10, "white")
+
+    }
+    function colorCircle(centerX, centerY, drawColor) {
+        canvasContext.fillStyle = drawColor
         canvasContext.beginPath();
-        canvasContext.arc(ballX, 100, 10, 0, Math.PI*2, true);
+        canvasContext.arc(ballX, ballY, 10, 0, Math.PI*2, true);
         canvasContext.fill()
     }
-
+    
     function colorRect(leftX,topY,width,height,drawColor) {
         canvasContext.fillStyle = drawColor;
         canvasContext.fillRect(leftX,topY,width,height)
