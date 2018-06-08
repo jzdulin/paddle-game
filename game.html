@@ -44,7 +44,7 @@
         canvas.addEventListener("mousemove",
         function(evt) {
             var mousePos = calculateMousePos(evt)
-            paddle1Y = mousePos.y
+            paddle1Y = mousePos.y-(PADDLE_HEIGHT/2)
         })
     }
 
@@ -69,7 +69,7 @@
         //black background
         colorRect(0,0,canvas.width,canvas.height,"black")
         //left players paddle
-        colorRect(0,paddle1Y,10,100,"white")
+        colorRect(0,paddle1Y,10,PADDLE_HEIGHT,"white")
         //ball
         colorCircle(ballX, ballY, 10, "white")
 
